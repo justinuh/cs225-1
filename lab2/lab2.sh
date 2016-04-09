@@ -7,8 +7,21 @@ echo "Enter a number"
 
 read "N1z"
 
-if ! [[ "$N1z" =~ "^[0-9]+$" ]] ; then
+DIV=$(( $N1z % 2 ))
+if [[ "$N1z" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
 
-echo "This is not a number"
+	if [[ "$DIV" -eq 0 ]]; then
+
+		echo "$N1z" is even number
+
+	else
+
+		echo "$N1z" is odd number
+
+	fi
+else
+
+	echo "You didn't enter a number d00dz!"
 
 fi
+
