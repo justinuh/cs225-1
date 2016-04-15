@@ -19,7 +19,8 @@ useridZ=$(id -u)
 
 echo "The current user's UID is: ${useridZ}"
 
-if [[ $[useridZ] = 0 ]]
+if (( $[useridZ] = 0 ))
 	echo "Do not run as root!"
+	exit
 	exit
 fi
