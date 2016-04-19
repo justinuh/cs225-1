@@ -18,7 +18,21 @@
 useridZ=$(id -u)
 
 echo "The current user's UID is: ${useridZ}"
-
-if [[ ${useridZ} = '0']] ;then
-	echo "Do not run as root!"
+#check for root
+if [ ${useridZ} -eq '0' ]; then
+	echo "Do not run as root! OMG!"
+	exit 1
+fi
+#check for >500 uid
+if [ ${useridZ} -gt '500' ]; then
+	echo "UID greater than 500...w00t we are secure"
+else
+	exit 1
+fi
+#check for /etc/passwd and whether it is readable
+if [ -r /etc/passwd ]; then
+	echo "Yep its there and readable!"
+	if grep $USER /etc/passwd; then
+	echo "The Home directory of $USER is: $(df -h /home/$USER | awk '{print $2}')"
+	fi
 fi
