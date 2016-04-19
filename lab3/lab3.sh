@@ -33,6 +33,6 @@ fi
 if [ -r /etc/passwd ]; then
 	echo "Yep its there and readable!"
 	if grep $USER /etc/passwd; then
-	echo "The Home directory of $USER is: $(df -h /home/$USER | awk '{print $2}')"
+	echo "The Home directory of $USER is: $(du -hs $HOME | awk '{print $1}')"
 	fi
 fi
