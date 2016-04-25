@@ -17,10 +17,10 @@
 IFSOLD="$IFS"
 IFS=$'\n'
 
-mf1=$(cat medialab/medialist.txt)
+mf1=$(cat ~/medialab/medialist.txt)
 rm foundfiles.txt lostfiles.txt
 for count in $mf1; do
-	if [[ -f medialab/$count ]]; then
+	if [[ -f ~/medialab/$count ]]; then
 		echo "$count" >> foundfiles.txt 
 	else
 		echo "$count" >> lostfiles.txt
