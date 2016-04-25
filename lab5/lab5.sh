@@ -18,6 +18,7 @@ IFSOLD="$IFS"
 IFS=$'\n'
 
 mf1=$(cat medialab/medialist.txt)
+rm foundfiles.txt lostfiles.txt
 for count in $mf1; do
 	if [[ -f medialab/$count ]]; then
 		echo "$count" >> foundfiles.txt 
@@ -26,4 +27,6 @@ for count in $mf1; do
 	fi
 done
 
+echo "$(cat foundfiles.txt | wc -l) files accounted for"
+echo "$(cat lostfiles.txt | wc -l) files not found"
 IFS=$IFSOLD
