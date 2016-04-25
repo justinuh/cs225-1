@@ -11,3 +11,8 @@
 #Display the number of files that are in the media.xml that do not exist in the medialab directory
 
 #--------------------------------------------------------------------------------------
+
+IFS.OLD="$IFS"
+IFS=$'\n'
+
+
