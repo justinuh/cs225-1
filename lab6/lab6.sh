@@ -12,7 +12,30 @@
 
 #--------------------------------------------------------------------------------------
 
-IFS.OLD="$IFS"
+IFSOLD="$IFS"
 IFS=$'\n'
 
+mldir_list="$(ls ~/medialab/*mpg | awk -F '/' '{ print $4 }')"
+xml_list="$(awk '/mpg/' ~/medialab/media.xml | awk -F '<' '{ print $2 }' | awk -F '>' '{ print $2 }')"
 
+
+for i in $mldir_list; do
+
+	for j in $xml_list; do
+		
+		echo "$i"
+		echo "$j"
+
+		if ! [[ $i ]]; then
+
+			echo "$i"
+			echo "$j"
+
+		fi
+
+	done
+
+done
+
+
+IFS="$IFSOLD"
