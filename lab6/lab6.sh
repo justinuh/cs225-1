@@ -18,7 +18,7 @@ IFS=$'\n'
 count1=0
 count2=0
 
-mldir_list="$(ls ~/medialab/* | awk -F '/' '{ print $4 }')"
+mldir_list="$(ls ~/medialab/* | awk -F '/' '{ print $NF }')"
 xml_list="$(awk '/mpg|mp3/' ~/medialab/media.xml | awk -F '<' '{ print $2 }' | awk -F '>' '{ print $2 }')"
 
 #1 and 2
@@ -33,7 +33,12 @@ done
 for j in $xml_list; do
 	if ! [[ -f ~/media/"$j" ]]; then
 		((count2+=1))
-		echo "$count2 - $j"		
-	fi	
-done
+		echo "$count2 - $j"
+	fi
+done 
+
+#Tell everybody about it!
+echo "There are $count1 files in the medialab directory that do not exist in the media.xml.
+echo "There are $count2 files in the media.xml that do not exist in the medialab directory.
+
 IFS="$IFSOLD"
