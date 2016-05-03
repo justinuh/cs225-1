@@ -12,4 +12,6 @@
 # "test.txt"
 
 
-
+echo
+while [[ -n "$1" ]]; do
+	
